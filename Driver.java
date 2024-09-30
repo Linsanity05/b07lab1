@@ -1,16 +1,37 @@
+import java.io.File;
+
 public class Driver {
     public static void main(String [] args) {
-    Polynomial p = new Polynomial();
-    System.out.println(p.evaluate(3));
-    double [] c1 = {6,0,0,5};
-    Polynomial p1 = new Polynomial(c1);
-    double [] c2 = {0,-2,0,0,-9};
-    Polynomial p2 = new Polynomial(c2);
-    Polynomial s = p1.add(p2);
-    System.out.println("s(0.1) = " + s.evaluate(0.1));
-    if(s.hasRoot(1))
-    System.out.println("1 is a root of s");
-    else
-    System.out.println("1 is not a root of s");
+        double [] c1 = {1.0,3.2};
+        int [] c2 = {0,1};
+        double [] c3 = {5.3,-3.2,1.5};
+        int [] c4 = {2,1,0};
+            
+        Polynomial p = new Polynomial(c1,c2);
+        Polynomial p1 = new Polynomial(c3,c4);
+        Polynomial p2 = p.add(p1);
+        
+        for(int i=0; i<p2.expo.length; i++){
+            System.out.println("Exponent:" + p2.expo[i] + "   Coefficient: " + p2.coeff[i]);
+        }
+
+        Polynomial p3 = p.multiply(p1);
+
+        for(int i=0; i<p3.expo.length; i++){
+            System.out.println("Exponent:" + p3.expo[i] + "   Coefficient: " + p3.coeff[i]);
+        }
+
+        File input = new File("test.txt");
+        System.out.println(input.exists());
+        Polynomial p4 = new Polynomial(input);
+
+        for(int i=0; i<p4.expo.length; i++){
+            System.out.println("Exponent:" + p4.expo[i] + "   Coefficient: " + p4.coeff[i]);
+        }
+
+        p3.saveToFile("output");
+
+        System.out.println(p1.evaluate(3));
+        System.out.println(p1.hasRoot(3));
     }
 }
