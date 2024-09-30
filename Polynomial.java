@@ -86,7 +86,6 @@ public class Polynomial{
                 }
             }
         }
-        System.out.println(exponent_to_coefficient);
 
         remove_zeros(exponent_to_coefficient);
         
@@ -145,7 +144,6 @@ public class Polynomial{
                 map.put(poly.expo[i], poly.coeff[i]);
             }
         }
-        System.out.println(map);
     }
 
     private void remove_zeros(HashMap<Integer, Double> map){
